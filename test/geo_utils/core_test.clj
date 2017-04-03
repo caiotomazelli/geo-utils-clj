@@ -69,11 +69,11 @@
 (facts about geo-distance
   (fact "point-to-line-segment-distance" ; comparing to node library
     (point-to-line-segment-distance p-sp p-rj p-bh) => 328099.8643303486)
-  (fact "point-to-polyline-distance"
+  (fact "point-to-polyline-distance"  ; TODO Explain why polyline vector works and polylinelists crashes point-to-polyline-distance
     (point-to-polyline-distance 
       {:latitude -23 :longitude -46} 
       [{:latitude -22 :longitude -43}
        {:latitude -19 :longitude -43} 
        {:latitude -20 :longitude -40}]) => 
     {:distance (point-to-line-segment-distance p-sp p-rj p-bh)
-     :line [p-rj p-bh]}))
+     :line [{:latitude -22 :longitude -43} {:latitude -19 :longitude -43}]}))

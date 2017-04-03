@@ -96,8 +96,10 @@
 	(let [point-coord (point point-latlgn)
 			  polyline-coord (polyline polyline-latlgn)
 			  distances (map
-			  	(fn [x y] {:distance (point-to-line-segment-distance point-coord x y)
-			  		:line [x y]})
+			  	(fn [x y x-latlgn y-latlgn] {:distance (point-to-line-segment-distance point-coord x y)
+			  		:line [x-latlgn y-latlgn]})
 					polyline-coord 
-					(drop 1 polyline-coord))]
+					(drop 1 polyline-coord)
+			  	polyline-latlgn
+			  	(drop 1 polyline-latlgn))]
 		(apply min-key :distance distances)))
